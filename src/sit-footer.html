@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="sit-footer">
+  <template>
+   <style>
+   :host {
+     display: block;
+     color: #ffffff;
+     height: 30vh;
+     background-color: var(--home-title-bg);
+   }
+  </style>
+  <footer>
+    
+  </footer>
+  </template>
+
+  <script>
+  class SitFooter extends Polymer.Element {
+   static get is() { return 'sit-footer'; }
+   static get properties() {
+     return {
+       prop1: {
+         type: String,
+         value: ''
+       }
+     };
+   }
+  }
+
+  window.customElements.define(SitFooter.is, SitFooter);
+  </script>
+</dom-module>

@@ -1,0 +1,210 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html"> 
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="sit-home">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        min-height: 100vh;
+        height: 100%;
+        position: relative;
+        top: -64px;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        letter-spacing: 5px;
+      }
+
+      /* Create a Parallax Effect */
+      section {
+        position: relative;
+      }
+
+      section .placeholder, section .paralax-background {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      /* First image (Logo. Full height) */
+      section[home], section[home] .placeholder {
+        height: 100%;
+        min-height: 100vh;
+        opacity: 0.75;
+      }
+
+      section[home] .paralax-background {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      section[about] {
+        padding: 64px 16px;
+        color: var(--app-text-color);
+      }
+
+      section[contact], section[contact] .placeholder {
+        min-height: 400px;
+        height: 400px;
+        opacity: 0.75;
+      }
+      
+      section[contact] .paralax-background {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      section[contact-form] {
+
+      }
+
+      [home] h1 {
+        color: #ffffff;
+        background-color: #000000;
+        padding: 12px 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        white-space: nowrap;
+      }
+
+      [contact] paper-button {
+        background-color: #ffffff;
+        color: var(--home-title-bg);
+        padding: 12px 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        white-space: nowrap;
+      }
+
+      paper-button a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /**
+        * Persist animation using : animation-fill-mode set to forward
+        * @see https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode
+        */
+       .fade {
+         -webkit-animation: fadeout 3s forwards; /* Safari and Chrome */
+         -moz-animation: fadeout 3s forwards; /* Firefox */
+         -ms-animation: fadeout 3s forwards; /* Internet Explorer */
+         -o-animation: fadeout 3s forwards; /* Opera */
+         animation: fadeout 3s forwards;
+       }
+
+       /* Key frame animation */
+       @keyframes fadeout {
+           from { opacity: 1; }
+           to   { opacity: 0; }
+       }
+
+       /* Firefox */
+       @-moz-keyframes fadeout {
+           from { opacity: 1; }
+           to   { opacity: 0; }
+       }
+
+       /* Safari and Chrome */
+       @-webkit-keyframes fadeout {
+           from { opacity: 1; }
+           to   { opacity: 0; }
+       }
+
+       /* Internet Explorer */
+       @-ms-keyframes fadeout {
+           from { opacity: 1; }
+           to   { opacity: 0; }
+       }
+
+       /* Opera */
+       @-o-keyframes fadeout {
+           from { opacity: 1; }
+           to   { opacity: 0; }
+       }
+      @media (max-width: 600px) {
+        .small {
+          display: none;
+        }
+      }
+    </style>
+
+    <section id="home" home>
+      <div class="paralax-background" home-pil></div>
+      <div class="placeholder"
+        style="background-image: url('data:image/jpeg;base64,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');"
+        data-image="../images/pexels-photo-297755.jpeg">
+      </div>
+      <h1>S<span class="small">ystème d'</span>I<span class="small">nformation </span>T<span class="small">ouristique</span> Benin</h1>
+    </section>
+    <section about>
+      <p>Fugiat ea nisi esse duis dolore dolore aute enim duis magna elit mollit enim consectetur proident ut cillum est minim ut cupidatat eiusmod culpa cillum commodo ea aliqua esse pariatur eiusmod ad anim laboris in sit deserunt tempor ut anim fugiat est cillum mollit veniam elit in ex cillum cupidatat commodo nostrud voluptate culpa magna reprehenderit laborum velit sunt mollit tempor anim quis magna aliquip incididunt laboris culpa aliquip nisi ut quis exercitation consectetur excepteur aute ullamco ut et id aliqua laborum fugiat mollit eu ullamco excepteur dolore magna in reprehenderit occaecat excepteur exercitation nulla esse dolore in id laborum consectetur velit dolore dolor excepteur consectetur irure magna ut consectetur ea eiusmod amet deserunt eiusmod consectetur elit exercitation quis esse aute velit amet in sint qui quis ea incididunt reprehenderit cillum adipisicing magna eu enim enim in do cupidatat.</p>
+    </section>
+    <section id="contact" contact>
+      <div class="paralax-background"></div>
+      <div class="placeholder"
+        style="background-image: url('data:image/jpeg;base64,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')"
+      data-image="../images/pexels-photo-59519.jpeg"></div>
+        <a
+          target="_blank"
+          href="mailto:joe@example.com?subject=Demande d'information">
+          <paper-button raised>Nous contacter</a></paper-button>
+    </section>
+  </template>
+
+  <script>
+    class SitHome extends Polymer.Element {
+      static get is() { return 'sit-home'; }
+      ready() {
+        super.ready();
+
+        const parallaxes = this.shadowRoot.querySelectorAll('.placeholder');
+
+        // Only create the load once
+        this.loader = new Image();
+
+        const io = new IntersectionObserver(this.loadImage.bind(this), {rootMarging: '0px 0px 0px 0px'});
+        parallaxes.forEach(parallaxe => {
+          io.observe(parallaxe);
+        });
+      }
+
+      loadImage(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const bg = entry.target;
+            this.loader.src = bg.dataset.image;
+
+            bg.classList.add('fade');
+            bg.parentNode.querySelector('.paralax-background').setAttribute('style', `background-image: url('${bg.dataset.image}')`);
+          }
+        });
+      }
+    }
+
+    window.customElements.define(SitHome.is, SitHome);
+  </script>
+</dom-module>
