@@ -2,17 +2,97 @@
 
 <dom-module id="sit-footer">
   <template>
-   <style>
-   :host {
-     display: block;
-     color: #ffffff;
-     height: 30vh;
-     background-color: var(--home-title-bg);
-   }
-  </style>
-  <footer>
-    
-  </footer>
+    <style>
+      :host {
+        display: block;
+        color: #ffffff;
+        height: 30vh;
+        /*padding: 16px 12px;*/
+        background-color: var(--home-title-bg);
+        box-sizing: content-box;
+      }
+
+      footer {
+        height: 90%;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-align-content: stretch;
+        -ms-flex-line-pack: stretch;
+        align-content: stretch;
+        -webkit-align-items: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+      }
+      footer section {
+        padding: 8px;
+      }
+
+      footer section.left {
+        height: 30%;
+      }
+
+
+      footer section.right {
+        height: 70%;
+      }
+
+      .copyright {
+        color: #fefefe;
+        padding: 4px;
+        background-color: var(--home-title-bg);
+        font-weight: bold; 
+        height: 10%;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .copyright a {
+        color: inherit;
+        text-decoration: underline;
+        font-style: italic;
+      }
+
+      @media (min-width: 600px) {
+        footer {
+          -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+          flex-direction: row;
+        }
+
+
+        footer section.left {
+          width: 30%;
+          height: 100%;
+          background: #353535;
+          box-shadow: 1px 1px 10px #111;
+        }
+
+        footer section.right {
+          width: 70%;
+          height: 100%;
+        }
+      }
+    </style>
+    <footer>
+      <section class="left">
+        <header></header>
+      </section>
+      <section class="right">
+        <header></header>
+      </section>
+    </footer>
+    <section class="copyright">Made by &copy;<a href="https://pinnackl.com">Pinnackl</a></section>
   </template>
 
   <script>

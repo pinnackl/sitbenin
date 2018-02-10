@@ -15,8 +15,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="generator" content="Polymer Starter Kit">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>My App</title>
-    <meta name="description" content="My App description">
+    <title>SIT Benin</title>
+    <meta name="description" content="Système d'Inforamtion Touristique">
 
     <!--
       The `<base>` tag below is present to support two advanced deployment options:
@@ -30,33 +30,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     -->
     <base href="/">
 
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="images/favicon.ico?v1">
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="manifest.json">
 
     <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#3f51b5">
+    <meta name="theme-color" content="#3c3c3c">
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My App">
+    <meta name="application-name" content="Système d'Inforamtion Touristique">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="My App">
+    <meta name="apple-mobile-web-app-title" content="Système d'Inforamtion Touristique">
 
     <!-- Homescreen icons -->
-    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+    <link rel="apple-touch-icon" href="images/manifest/icon-48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192.png">
 
     <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144.png">
+    <meta name="msapplication-TileColor" content="#3c3c3c">
     <meta name="msapplication-tap-highlight" content="no">
 
     <script>
@@ -92,17 +92,73 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
-      body {
+      html,body {
         margin: 0;
         line-height: 1.5;
         min-height: 100vh;
+        height: 100%;
         background-color: #eeeeee;
       }
       body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+      /* Skeleton*/
+        sit-app[unloaded] {
+          display: block;
+          min-height: 110%;
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-image: url('data:image/jpeg;base64,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');
+        }
+
+        sit-app[unloaded] h1 {
+          margin: 0;
+        }
+
+        sit-app[unloaded] header {
+          height: 64px;
+          line-height: 64px;
+          font-size: 20px;
+          letter-spacing: 3px;
+          pointer-events: none;
+          color: #ffffff;
+          /*background-color: #3c3c3c;*/
+          padding: 0 16px;
+        }
+
+        sit-app[unloaded] main {
+          opacity: .75;
+        }
+
+        sit-app[unloaded] h1 {
+          letter-spacing: 5px;
+          font-size: 22px;
+          color: #ffffff;
+          background-color: #000000;
+          padding: 12px 24px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          -ms-transform: translate(-50%,-50%);
+          white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+          .small {
+            display: none;
+          }
+        }
+      /* Skeleton*/
     </style>
   </head>
   <body>
-    <sit-app></sit-app>
+    <sit-app unloaded>
+      <header>SIT Benin</header>
+      <main>
+        <h1>S<span class="small">ystème d'</span>I<span class="small">nformation </span>T<span class="small">ouristique</span> Benin</h1>
+      </main>
+    </sit-app>
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>

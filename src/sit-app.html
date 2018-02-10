@@ -38,17 +38,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
+      :host(:not([page=home])) {
+        --app-primary-color: var(--home-title-bg);
+      }
+
       app-drawer-layout:not([narrow]) [drawer-toggle] {
         display: none;
       }
 
+      app-header-layout {
+        height: 100%;
+      }
+
       app-header {
-        color: var(--home-title-bg);
+        color: #fff;
         background-color: var(--app-primary-color);
         --app-header-background-rear-layer: {
           /* The header is blue when condensed */
           background-color: #fefefe;
         };
+      }
+
+      app-header[shadow] {
+        color: var(--home-title-bg);
       }
 
       [main-title] {
@@ -78,6 +90,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       iron-pages {
         position: relative;
+      }
+
+      [hidden] {
+        display: none;
       }
     </style>
 
@@ -117,10 +133,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
-          <sit-home name="home"></sit-home>
+          <sit-home name="home" on-loaded-changed="_loaded"></sit-home>
           <sit-view404 name="view404"></sit-view404>
         </iron-pages>
-        <sit-footer></sit-footer>
+        <sit-footer id="footer" hidden></sit-footer>
       </app-header-layout>
     </app-drawer-layout>
   </template>
@@ -136,6 +152,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
+          unloaded: {
+            type: Boolean,
+            value: true,
+            reflectToAttribute: true,
+            notify: true
+          },
           routeData: Object,
           subroute: String,
           // This shouldn't be neccessary, but the Analyzer isn't picking up
@@ -150,15 +172,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         ];
       }
 
+      _loaded() {
+        this.set('unloaded', false);
+        this.$.footer.hidden = false;
+      }
+
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
         this.page = page || 'home';
 
         // Close a non-persistent drawer when the page & route are changed.
-        // if (!this.$.drawer.persistent) {
-        //   this.$.drawer.close();
-        // }
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
       }
 
       _pageChanged(page) {
